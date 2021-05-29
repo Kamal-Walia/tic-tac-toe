@@ -5378,6 +5378,11 @@ rimraf@~2.2.6:
   resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-2.2.8.tgz#e439be2aaee327321952730f99a8929e4fc50582"
   integrity sha1-5Dm+Kq7jJzIZUnMPmaiSnk/FBYI=
 
+rn-js-toast@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/rn-js-toast/-/rn-js-toast-0.1.1.tgz#16fdeddc186567a717bc02c227f19bdb4ce0f881"
+  integrity sha512-ARBIBlfIX9wicgUeILRURDNPl2wS5tlrFhi2f4UBXhS1YpedpzdA1jeh7rzSaVgcm5WMCXjJmgi7ge2SbJI7MA==
+
 rsvp@^4.8.4:
   version "4.8.5"
   resolved "https://registry.yarnpkg.com/rsvp/-/rsvp-4.8.5.tgz#c8f155311d167f68f21e168df71ec5b083113734"

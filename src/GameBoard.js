@@ -1,5 +1,6 @@
 import React from 'react';
 import {Text, TouchableOpacity, View, Alert} from 'react-native';
+import RnToast from 'rn-js-toast';
 
 const Row = props => {
   const borderRightWidth =
@@ -28,6 +29,7 @@ class GameBoard extends React.Component {
   constructor() {
     super();
     this.state = {gameBoard: Array(9).fill(null), previousTurn: 'X'};
+    this.toastRef = null;
   }
 
   checkWinner = value => {
@@ -81,18 +83,9 @@ class GameBoard extends React.Component {
     ) {
       isWinner = true;
     }
-    console.log(
-      'isWinner',
-      isWinner,
-      this.state.gameBoard[6],
-      this.state.gameBoard[4],
-      this.state.gameBoard[2],
-      value,
-    );
     if (isWinner) {
-      Alert.alert('Game Over', `Winner is ${value}`, [
-        {text: 'OK', onPress: () => this.resetBoard()},
-      ]);
+      this.toastRef.show(`Winner is ${value}`, 1000);
+      this.resetBoard();
     }
   };
 
@@ -104,9 +97,9 @@ class GameBoard extends React.Component {
     const value = this.state.previousTurn === 'X' ? '0' : 'X';
     const array = this.state.gameBoard;
     array[index] = value;
-    console.log(this.state.gameBoard, value);
-    this.checkWinner(value);
-    this.setState({gameBoard: array, previousTurn: value});
+    this.setState({gameBoard: array, previousTurn: value}, () => {
+      this.checkWinner(value);
+    });
   };
 
   render() {
@@ -135,6 +128,7 @@ class GameBoard extends React.Component {
             {this.state.gameBoard.map((element, index) => {
               return (
                 <Row
+                  key={index}
                   id={index}
                   setValue={this.setValue}
                   value={element}
@@ -147,6 +141,7 @@ class GameBoard extends React.Component {
         <TouchableOpacity onPress={this.resetBoard}>
           <Text style={{fontSize: 22}}>Reset</Text>
         </TouchableOpacity>
+        <RnToast ref={toast => (this.toastRef = toast)} />
       </View>
     );
   }
