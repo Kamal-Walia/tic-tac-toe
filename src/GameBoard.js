@@ -84,7 +84,7 @@ class GameBoard extends React.Component {
       isWinner = true;
     }
     if (isWinner) {
-      this.toastRef.show(`Winner is ${value}`, 1000);
+      this.toastRef.show(`Winner is ${value}`, 1000, 'bottom');
       this.resetBoard();
     }
   };
