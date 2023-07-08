@@ -86,6 +86,9 @@ class GameBoard extends React.Component {
     if (isWinner) {
       this.toastRef.show(`Winner is ${value}`, 1000, 'bottom');
       this.resetBoard();
+    }else if(this.state.gameBoard.filter(item => item !=null).length === this.state.gameBoard.length){
+      this.toastRef.show(`Draw`, 1000, 'bottom');
+      this.resetBoard();
     }
   };
 
